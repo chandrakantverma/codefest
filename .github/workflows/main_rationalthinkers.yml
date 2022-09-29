@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://mcr.microsoft.com/
-        username: ${{ secrets.AzureAppService_ContainerUsername_04cae8eda48b4e7b925427ae6835f3f2 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_a46a5e2b12024af388695955e224846a }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_21e00409768447e2b69009115878497f }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_1cb7fb73080a4ec6afc80be2d91b3ae0 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_04cae8eda48b4e7b925427ae6835f3f2 }}/appsvc/staticsite:${{ github.sha }}
+        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_21e00409768447e2b69009115878497f }}/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'rationalthinkers'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_36b338a58da744a4a58b5eb71ea4e1b1 }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_04cae8eda48b4e7b925427ae6835f3f2 }}/appsvc/staticsite:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_cc05a55e665d468b91e0657fae30212f }}
+        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_21e00409768447e2b69009115878497f }}/appsvc/staticsite:${{ github.sha }}'
